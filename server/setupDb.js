@@ -23,12 +23,10 @@ async function setupDb() {
         await rolesTable(connection);
         await usersTable(connection);
         await tokensTable(connection);
-        // await containerTypesTable(connection);
-        // await boxesTable(connection);
+    
 
-        // await generateRoles(connection);
-        // await generateUsers(connection);
-        // await generateContainerTypes(connection);
+        await generateRoles(connection);
+        await generateUsers(connection);
     
     }
 
@@ -92,89 +90,30 @@ async function rolesTable(db) {
     }
 }
 
-// async function containerTypesTable(db) {
-//     try {
-//         const sql = `CREATE TABLE \`container-types\` (
-//                     id int(10) NOT NULL AUTO_INCREMENT,
-//                     title varchar(20) NOT NULL,
-//                     PRIMARY KEY (id)
-//                     ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4`;
-//         await db.execute(sql);
-//     } catch (error) {
-//         console.log('Nepavyko sukurti "typu" lenteles');
-//         console.log(error);
-//         throw error;
-//     }
-// }
+async function generateRoles(db) {
+    try {
+        const sql = `INSERT INTO roles (role) VALUES ('admin'), ('seller')`;
+        await db.execute(sql);
+    } catch (error) {
+        console.log('Nepavyko sugeneruoti "roles" lenteles turinio');
+        console.log(error);
+        throw error;
+    }
+}
 
-// async function boxesTable(db) {
-//     try {
-//     const sql = `CREATE TABLE boxes (
-//                     id int(10) NOT NULL AUTO_INCREMENT,
-//                     user_id int(10) NOT NULL,
-//                     container_type_id int(10) NOT NULL,
-//                     title varchar(200) NOT NULL,
-//                     color varchar(50) NOT NULL,
-//                     price int(6) unsigned NOT NULL DEFAULT 0,
-//                     year int(4) unsigned NOT NULL,
-//                     location varchar(50) NOT NULL,
-//                     mileage int(10) unsigned NOT NULL DEFAULT 0,
-//                     image varchar(100) NOT NULL,
-//                     created timestamp NOT NULL DEFAULT current_timestamp(),
-//                     PRIMARY KEY (id),
-//                     KEY user_id (user_id),
-//                     KEY container_type_id (container_type_id),
-//                     CONSTRAINT boxes_ibfk_1 FOREIGN KEY (user_id) REFERENCES users (id),
-//                     CONSTRAINT boxes_ibfk_2 FOREIGN KEY (container_type_id) REFERENCES \`container-types\` (id)
-//                     ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4`;
-//         await db.execute(sql);
-//     } catch (error) {
-//         console.log('Nepavyko sukurti "boxes" lenteles');
-//         console.log(error);
-//         throw error;
-//     }
-// }
-
-// async function generateRoles(db) {
-//     try {
-//         const sql = `INSERT INTO roles (role) VALUES ('admin'), ('seller'), ('buyer')`;
-//         await db.execute(sql);
-//     } catch (error) {
-//         console.log('Nepavyko sugeneruoti "roles" lenteles turinio');
-//         console.log(error);
-//         throw error;
-//     }
-// }
-
-// async function generateUsers(db) {
-//     try {
-//         const sql = `INSERT INTO users (fullname, email, password_hash, role_id) 
-//                     VALUES ('simas simaitis', 'simas@simas.lt', '${hash('simas@simas.lt')}', 1),
-//                         ('mantas mantaitis', 'mantas@mantas.lt', '${hash('mantas@mantas.lt')}', 2),
-//                         ('tadas tadaitis', 'tadas@tadas.lt', '${hash('tadas@tadas.lt')}', 2),
-//                         ('andrius andraitis', 'andrius@andrius.lt', '${hash('andrius@andrius.lt')}', 3),
-//                         ('edvardas edvardaitis', 'edvardas@edvardas.lt', '${hash('edvardas@edvardas.lt')}', 3)`;
-//         await db.execute(sql);
-//     } catch (error) {
-//         console.log('Nepavyko sugeneruoti "users" lenteles turinio');
-//         console.log(error);
-//         throw error;
-//     }
-// }
-
-// async function generateContainerTypes(db) {
-//     const containerTypes = ['S', 'M', 'L'];
-//     try {
-//         const sql = `INSERT INTO \`container-types\` (title) 
-//                     VALUES ${containerTypes.map(s => `("${s}")`).join(', ')};`;
-//         console.log(sql);
-//         await db.execute(sql);
-//     } catch (error) {
-//         console.log('Nepavyko sugeneruoti "typu" lenteles turinio');
-//         console.log(error);
-//         throw error;
-//     }
-// }
+async function generateUsers(db) {
+    try {
+        const sql = `INSERT INTO users (fullname, email, password_hash, role_id) 
+                    VALUES ('simas simaitis', 'simas@simas.lt', '${hash('simas@simas.lt')}', 1),
+                        ('mantas mantaitis', 'mantas@mantas.lt', '${hash('mantas@mantas.lt')}', 2),
+                        ('tadas tadaitis', 'tadas@tadas.lt', '${hash('tadas@tadas.lt')}', 2)`;
+        await db.execute(sql);
+    } catch (error) {
+        console.log('Nepavyko sugeneruoti "users" lenteles turinio');
+        console.log(error);
+        throw error;
+    }
+}
 
 
 export const connection = await setupDb();
