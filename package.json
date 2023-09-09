@@ -4,9 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev": "npm-run-all --parallel client:dev server:dev",
+    "server:dev": "npm --prefix ./server/ run dev",
+    "client:dev": "npm --prefix ./client/ run start",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "Arunas",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "npm-run-all": "^4.1.5"
+  }
 }
