@@ -175,7 +175,7 @@ export function Register() {
                         <label htmlFor="repeatpassword">Repeat password</label>
                         <div className="invalid-feedback">{repasswordErr}</div>
                     </div>
-                    <button className="btn btn-warning w-100 py-2" type="submit">Register</button>
+                    <button className="btn btn-success w-100 py-2" type="submit">Register</button>
                 </form>
             </div>
         </div>

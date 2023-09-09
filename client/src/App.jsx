@@ -8,6 +8,7 @@ import { Login } from './pages/Login';
 import { NoPage } from './pages/NoPage';
 import { List } from './pages/List';
 import { Dashboard } from './pages/dashboard/Dashboard';
+import { Users } from './pages/users/Users';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           </Route>
           <Route Component={UserLayout}>
           <Route path='/dashboard' element={<Dashboard />}></Route>
+          <Route path='/users' element={<Users />}></Route>
           </Route>
           <Route Component={PublicLayout}>
             <Route path='*' element={<NoPage />}></Route>

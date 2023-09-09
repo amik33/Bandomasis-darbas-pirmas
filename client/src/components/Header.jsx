@@ -31,6 +31,7 @@ export function Header () {
 
     const adminLinks = <>
         <li className="nav-item"><Link to="/dashboard" className="nav-link text-dark">Dashboard</Link></li>
+        <li className="nav-item"><Link to="/users" className="nav-link text-dark">Users</Link></li>
         <li className="nav-item"><button onClick={logMeOut} className="nav-link text-dark" type="button">Logout</button></li>
     </>;
 
@@ -50,9 +51,9 @@ export function Header () {
 
     return (
     <div className="container">
-        <header className="text-bg-success d-flex flex-wrap  justify-content-center py-3 mb-4 border-bottom">
+        <header className="text-bg-danger d-flex flex-wrap  justify-content-center py-3 mb-4 border-bottom">
         <Link to="/" className="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
-            <span className="fs-3 px-3">CONTAINER CONTAINER CONTAINER</span>
+            <span className="fs-2 text-white px-5">Let's save</span>
         </Link>
         <ul className="nav nav-pills">
             <li className="nav-item"><Link to="/" className="nav-link text-dark">Home</Link></li>

@@ -98,7 +98,7 @@ export function Login () {
                         <label htmlFor="password">Password</label>
                         <div className="invalid-feedback">{passwordErr}</div>
                     </div>
-                    <button className="btn btn-warning w-100 py-2" type="submit">Login</button>
+                    <button className="btn btn-success w-100 py-2" type="submit">Login</button>
                 </form>
             </div>
         </div>

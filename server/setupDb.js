@@ -104,9 +104,11 @@ async function generateRoles(db) {
 async function generateUsers(db) {
     try {
         const sql = `INSERT INTO users (fullname, email, password_hash, role_id) 
-                    VALUES ('simas simaitis', 'simas@simas.lt', '${hash('simas@simas.lt')}', 1),
-                        ('mantas mantaitis', 'mantas@mantas.lt', '${hash('mantas@mantas.lt')}', 2),
-                        ('tadas tadaitis', 'tadas@tadas.lt', '${hash('tadas@tadas.lt')}', 2)`;
+                    VALUES ('Simas Simaitis', 'simas@simas.lt', '${hash('simas@simas.lt')}', 1),
+                        ('Tomas Tomaitis', 'tomas@tomas.lt', '${hash('tomas@tomas.lt')}', 1),
+                        ('Mantas Mantaitis', 'mantas@mantas.lt', '${hash('mantas@mantas.lt')}', 2),
+                        ('Andrius Andraitis', 'andrius@andrius.lt', '${hash('andrius@andrius.lt')}', 2),
+                        ('Tadas Tadaitis', 'tadas@tadas.lt', '${hash('tadas@tadas.lt')}', 2)`;
         await db.execute(sql);
     } catch (error) {
         console.log('Nepavyko sugeneruoti "users" lenteles turinio');
