@@ -87,9 +87,7 @@ export function UsersTable() {
                                     : <span className="btn btn-success rounded-pill">Active</span>}</td>
                                 <td>{formatDate(user.created)}</td>
                                 <td className="d-flex gap-2 justify-content-end">
-                                    {user.is_blocked
-                                        ? <Unblock userEmail={user.email} />
-                                        : <Block userEmail={user.email} />}
+                                    {user.is_blocked ? <Unblock userEmail={user.email} /> : <Block userEmail={user.email} />}
                                 </td>
                             </tr>
                         ))

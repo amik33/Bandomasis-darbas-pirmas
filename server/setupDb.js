@@ -23,11 +23,12 @@ async function setupDb() {
         await rolesTable(connection);
         await usersTable(connection);
         await tokensTable(connection);
-    
+        await totalTable(connection);
 
         await generateRoles(connection);
         await generateUsers(connection);
-    
+        await generateTotal(connection);
+
     }
 
     return connection;
@@ -90,6 +91,21 @@ async function rolesTable(db) {
     }
 }
 
+async function totalTable(db) {
+    try {
+        const sql = `CREATE TABLE total (
+                    id int(10) NOT NULL AUTO_INCREMENT,
+                    title varchar(20) NOT NULL,
+                    PRIMARY KEY (id)
+                    ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4`;
+        await db.execute(sql);
+    } catch (error) {
+        console.log('Nepavyko sukurti "total" lenteles');
+        console.log(error);
+        throw error;
+    }
+}
+
 async function generateRoles(db) {
     try {
         const sql = `INSERT INTO roles (role) VALUES ('admin'), ('seller')`;
@@ -112,6 +128,20 @@ async function generateUsers(db) {
         await db.execute(sql);
     } catch (error) {
         console.log('Nepavyko sugeneruoti "users" lenteles turinio');
+        console.log(error);
+        throw error;
+    }
+}
+
+async function generateTotal(db) {
+    const total = ['Vilnius', 'Kaunas', 'Klaipeda'];
+    try {
+        const sql = `INSERT INTO total (title) 
+                    VALUES ${total.map(s => `("${s}")`).join(', ')};`;
+        console.log(sql);
+        await db.execute(sql);
+    } catch (error) {
+        console.log('Nepavyko sugeneruoti "total" lenteles turinio');
         console.log(error);
         throw error;
     }
