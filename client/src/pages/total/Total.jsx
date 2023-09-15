@@ -2,7 +2,7 @@ import { useContext } from "react"
 import { GlobalContext } from "../../context/GlobalContext"
 import { Forbiden } from "../../components/error/Forbiden";
 import { TotalTable } from "../../components/total-table/TotalTable";
-import { SellerTotalTable} from '../../components/total-table/SellerTotalTable';
+import { UserTotalTable} from '../../components/total-table/UserTotalTable';
 import { Title } from "../../components/Title";
 
 export function Total() {
@@ -24,15 +24,15 @@ export function Total() {
         );
     }
 
-    if (role === 'seller') {
+    if (role === 'user') {
         return (
             <div className="container">
                 <div className="row">
                     <div className="col-12">
-                        <Title title='Seller total' />
+                        <Title title='User total' />
                     </div>
                     <div className="col-12">
-                        <SellerTotalTable />
+                        <UserTotalTable />
                     </div>
                 </div>
             </div>

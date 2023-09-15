@@ -8,7 +8,7 @@ import { Login } from '../pages/Login';
 export function UserLayout() {
     
     const { role } = useContext(GlobalContext);
-    const content = ['admin', 'seller', 'buyer'].includes(role) ? <Outlet /> : <Login />;
+    const content = ['admin', 'user'].includes(role) ? <Outlet /> : <Login />;
 
     return (
         <>

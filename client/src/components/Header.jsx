@@ -36,27 +36,19 @@ export function Header () {
         <li className="nav-item"><button onClick={logMeOut} className="nav-link text-dark" type="button">Logout</button></li>
     </>;
 
-    const sellerLinks = <>
+    const userLinks = <>
         <li className="nav-item"><Link to="/dashboard" className="nav-link text-dark">Dashboard</Link></li>
         <li className="nav-item"><Link to="/users" className="nav-link text-dark">Users</Link></li>
         <li className="nav-item"><Link to="/total" className="nav-link text-dark">Total</Link></li>
         <li className="nav-item"><button onClick={logMeOut} className="nav-link text-dark" type="button">Logout</button></li>
     </>;
 
-    const buyerLinks = <>
-        <li className="nav-item"><Link to="/dashboard" className="nav-link text-dark">Dashboard</Link></li>
-        <li className="nav-item"><Link to="/users" className="nav-link text-dark">Users</Link></li>
-        <li className="nav-item"><Link to="/total" className="nav-link text-dark">Total</Link></li>
-        <li className="nav-item"><button onClick={logMeOut} className="nav-link text-dark" type="button">Logout</button></li>
-    </>;
 
     let extraLinks = <></>;
     if (role === 'admin') {
         extraLinks = adminLinks;
-    } else if (role === 'seller') {
-        extraLinks = sellerLinks;
-    } else if (role === 'buyer') {
-        extraLinks = buyerLinks; 
+    } else if (role === 'user') {
+        extraLinks = userLinks;
     } else {
         extraLinks = publicLinks;
     }

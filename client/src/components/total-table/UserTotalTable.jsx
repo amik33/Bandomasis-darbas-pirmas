@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { GlobalContext } from '../../context/GlobalContext';
 
-export function SellerTotalTable() {
+export function UserTotalTable() {
     const { total } = useContext(GlobalContext);
 
     return (

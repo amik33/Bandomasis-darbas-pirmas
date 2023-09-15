@@ -70,7 +70,7 @@ export const ContextWrapper = (props) => {
     }
 
     function updateRole(role) {
-        const allowedRoles = ['public', 'admin', 'seller', 'buyer'];
+        const allowedRoles = ['public', 'admin', 'user'];
         if (allowedRoles.includes(role)) {
             setRole(role);
         }

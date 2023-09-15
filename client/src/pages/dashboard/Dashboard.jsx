@@ -1,7 +1,6 @@
 import { useContext } from 'react';
 import { AdminDashboard } from './AdminDashboard';
-import { SellerDashboard } from './SellerDashboard';
-import { BuyerDashboard } from './BuyerDashboard';
+import { UserDashboard } from './UserDashboard';
 import { GlobalContext } from '../../context/GlobalContext';
 import { Forbiden } from '../../components/error/Forbiden';
 
@@ -13,12 +12,8 @@ export function Dashboard() {
         return <AdminDashboard />;
     }
 
-    if (role === 'seller') {
-        return <SellerDashboard />;
-    }
-
-    if (role === 'buyer') {
-        return <BuyerDashboard />;
+    if (role === 'user') {
+        return <UserDashboard />;
     }
 
     return <Forbiden />;
