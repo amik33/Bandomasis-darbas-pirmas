@@ -108,7 +108,7 @@ async function totalTable(db) {
 
 async function generateRoles(db) {
     try {
-        const sql = `INSERT INTO roles (role) VALUES ('admin'), ('seller')`;
+        const sql = `INSERT INTO roles (role) VALUES ('admin'), ('seller'), ('buyer')`;
         await db.execute(sql);
     } catch (error) {
         console.log('Nepavyko sugeneruoti "roles" lenteles turinio');
@@ -122,9 +122,9 @@ async function generateUsers(db) {
         const sql = `INSERT INTO users (fullname, email, password_hash, role_id) 
                     VALUES ('Simas Simaitis', 'simas@simas.lt', '${hash('simas@simas.lt')}', 1),
                         ('Tomas Tomaitis', 'tomas@tomas.lt', '${hash('tomas@tomas.lt')}', 1),
+                        ('Tadas Tadaitis', 'tadas@tadas.lt', '${hash('tadas@tadas.lt')}', 2),
                         ('Mantas Mantaitis', 'mantas@mantas.lt', '${hash('mantas@mantas.lt')}', 2),
-                        ('Andrius Andraitis', 'andrius@andrius.lt', '${hash('andrius@andrius.lt')}', 2),
-                        ('Tadas Tadaitis', 'tadas@tadas.lt', '${hash('tadas@tadas.lt')}', 2)`;
+                        ('Andrius Andraitis', 'andrius@andrius.lt', '${hash('andrius@andrius.lt')}', 3)`;
         await db.execute(sql);
     } catch (error) {
         console.log('Nepavyko sugeneruoti "users" lenteles turinio');

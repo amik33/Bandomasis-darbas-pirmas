@@ -8,7 +8,7 @@ import { Login } from './pages/Login';
 import { NoPage } from './pages/NoPage';
 import { List } from './pages/List';
 import { Dashboard } from './pages/dashboard/Dashboard';
-import { AdminTotal } from './pages/total/AdminTotal';
+import { Total } from './pages/total/Total';
 import { AdminNewTotal } from './pages/total/AdminNewTotal';
 import { AdminEditTotal } from './pages/total/AdminEditTotal';
 import { Users } from './pages/users/Users';
@@ -25,11 +25,11 @@ function App() {
             <Route path='/login' element={<Login />}></Route>
           </Route>
           <Route Component={UserLayout}>
-          <Route path='/dashboard' element={<Dashboard />}></Route>
-          <Route path='/total' element={<AdminTotal />}></Route>
-          <Route path='/total/new' element={<AdminNewTotal />}></Route>
-          <Route path='/total/:total/edit' element={<AdminEditTotal />}></Route>
-          <Route path='/users' element={<Users />}></Route>
+            <Route path='/dashboard' element={<Dashboard />}></Route>
+            <Route path='/total' element={<Total />}></Route>
+            <Route path='/total/new' element={<AdminNewTotal />}></Route>
+            <Route path='/total/:total/edit' element={<AdminEditTotal />}></Route>
+            <Route path='/users' element={<Users />}></Route>
           </Route>
           <Route Component={PublicLayout}>
             <Route path='*' element={<NoPage />}></Route>

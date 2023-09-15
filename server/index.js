@@ -26,38 +26,38 @@ app.disable('x-powered-by');
 
 app.use(express.static('public'));
 
-// app.use(async (req, res, next) => {
-//     const { dublisToken } = req.cookies;
+app.use(async (req, res, next) => {
+    const { dublisToken } = req.cookies;
 
-//     req.user = {
-//         id: -1,
-//         role: 'public',
-//         isBlocked: false,
-//     };
+    req.user = {
+        id: -1,
+        role: 'public',
+        isBlocked: false,
+    };
 
-//     if (!dublisToken) {
-//         return next();
-//     }
+    if (!dublisToken) {
+        return next();
+    }
 
-//     try {
-//         const selectQuery = `SELECT users.id, users.is_blocked, roles.role FROM tokens
-//                             INNER JOIN users ON tokens.user_id = users.id
-//                             INNER JOIN roles ON roles.id = users.role_id
-//                             WHERE token = ?;`;
-//         const selectRes = await connection.execute(selectQuery, [dublisToken]);
-//         const tokens = selectRes[0];
+    try {
+        const selectQuery = `SELECT users.id, users.is_blocked, roles.role FROM tokens
+                            INNER JOIN users ON tokens.user_id = users.id
+                            INNER JOIN roles ON roles.id = users.role_id
+                            WHERE token = ?;`;
+        const selectRes = await connection.execute(selectQuery, [dublisToken]);
+        const tokens = selectRes[0];
 
-//         if (tokens.length === 1) {
-//             req.user.id = tokens[0].id;
-//             req.user.isBlocked = tokens[0].is_blocked;
-//             req.user.role = tokens[0].role;
-//         }
-//     } catch (error) {
-//         console.log(error);
-//     }
+        if (tokens.length === 1) {
+            req.user.id = tokens[0].id;
+            req.user.isBlocked = tokens[0].is_blocked;
+            req.user.role = tokens[0].role;
+        }
+    } catch (error) {
+        console.log(error);
+    }
 
-//     next();
-// });
+    next();
+});
 
 app.use('/api', api);
 
