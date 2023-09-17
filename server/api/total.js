@@ -105,7 +105,7 @@ total.put('/:oldTitle', async (req, res) => {
     if (!oldTitle || !newTitle) {
         return res.status(400).json({
             status: 'err',
-            msg: 'CTotal could not be created. Provide "title" values.',
+            msg: 'Total could not be created. Provide "title" values.',
         });
     }
 

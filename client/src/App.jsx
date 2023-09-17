@@ -12,6 +12,9 @@ import { Total } from './pages/total/Total';
 import { AdminNewTotal } from './pages/total/AdminNewTotal';
 import { AdminEditTotal } from './pages/total/AdminEditTotal';
 import { Users } from './pages/users/Users';
+import { Forms } from './pages/form/Forms';
+import { AddForm } from './pages/form/AddForm';
+import { EditForm } from './pages/form/EditForm';
 
 function App() {
   return (
@@ -30,6 +33,9 @@ function App() {
             <Route path='/total/new' element={<AdminNewTotal />}></Route>
             <Route path='/total/:total/edit' element={<AdminEditTotal />}></Route>
             <Route path='/users' element={<Users />}></Route>
+            <Route path='/forms' element={<Forms />}></Route>
+            <Route path='/forms/new' element={<AddForm />}></Route>
+            <Route path='/forms/:formId/edit' element={<EditForm />}></Route>
           </Route>
           <Route Component={PublicLayout}>
             <Route path='*' element={<NoPage />}></Route>

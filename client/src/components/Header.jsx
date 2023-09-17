@@ -33,6 +33,7 @@ export function Header () {
         <li className="nav-item"><Link to="/dashboard" className="nav-link text-dark">Dashboard</Link></li>
         <li className="nav-item"><Link to="/users" className="nav-link text-dark">Users</Link></li>
         <li className="nav-item"><Link to="/total" className="nav-link text-dark">Total</Link></li>
+        <li className="nav-item"><Link to="/forms" className="nav-link text-dark">Form</Link></li>
         <li className="nav-item"><button onClick={logMeOut} className="nav-link text-dark" type="button">Logout</button></li>
     </>;
 
@@ -40,6 +41,7 @@ export function Header () {
         <li className="nav-item"><Link to="/dashboard" className="nav-link text-dark">Dashboard</Link></li>
         <li className="nav-item"><Link to="/users" className="nav-link text-dark">Users</Link></li>
         <li className="nav-item"><Link to="/total" className="nav-link text-dark">Total</Link></li>
+        <li className="nav-item"><Link to="/forms" className="nav-link text-dark">Form</Link></li>
         <li className="nav-item"><button onClick={logMeOut} className="nav-link text-dark" type="button">Logout</button></li>
     </>;
 

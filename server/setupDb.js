@@ -24,10 +24,14 @@ async function setupDb() {
         await usersTable(connection);
         await tokensTable(connection);
         await totalTable(connection);
+        await steeringWheelTable(connection);
+        await formsTable(connection);
 
         await generateRoles(connection);
         await generateUsers(connection);
         await generateTotal(connection);
+        await generateSteeringWheel(connection);
+        // await generateForms(connection);
 
     }
 
@@ -106,6 +110,51 @@ async function totalTable(db) {
     }
 }
 
+async function steeringWheelTable(db) {
+    try {
+        const sql = `CREATE TABLE \`steering-wheel\` (
+                        id int(1) NOT NULL AUTO_INCREMENT,
+                        side varchar(10) NOT NULL,
+                        PRIMARY KEY (id)
+                    ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4`;
+        await db.execute(sql);
+    } catch (error) {
+        console.log('Nepavyko sukurti "steering-wheel" lenteles');
+        console.log(error);
+        throw error;
+    }
+}
+
+async function formsTable(db) {
+    try {
+        const sql = `CREATE TABLE forms (
+                        id int(10) NOT NULL AUTO_INCREMENT,
+                        user_id int(10) NOT NULL,
+                        total_id int(10) NOT NULL,
+                        title varchar(200) NOT NULL,
+                        color varchar(50) NOT NULL,
+                        price int(6) unsigned NOT NULL DEFAULT 0,
+                        year int(4) unsigned NOT NULL,
+                        steering_wheel_id int(1) NOT NULL DEFAULT 0,
+                        location varchar(50) NOT NULL,
+                        image varchar(100) NOT NULL,
+                        created timestamp NOT NULL DEFAULT current_timestamp(),
+                        PRIMARY KEY (id),
+                        KEY user_id (user_id),
+                        KEY total_id (total_id),
+                        KEY steering_wheel_id (steering_wheel_id),
+                        CONSTRAINT forms_ibfk_1 FOREIGN KEY (user_id) REFERENCES users (id),
+                        CONSTRAINT forms_ibfk_2 FOREIGN KEY (steering_wheel_id) REFERENCES \`steering-wheel\` (id),
+                        CONSTRAINT forms_ibfk_3 FOREIGN KEY (total_id) REFERENCES total (id)
+                    ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4`;
+        await db.execute(sql);
+    } catch (error) {
+        console.log('Nepavyko sukurti "forms" lenteles');
+        console.log(error);
+        throw error;
+    }
+}
+
 async function generateRoles(db) {
     try {
         const sql = `INSERT INTO roles (role) VALUES ('admin'), ('user')`;
@@ -146,6 +195,34 @@ async function generateTotal(db) {
         throw error;
     }
 }
+
+async function generateSteeringWheel(db) {
+    const steeringWheelSides = ['left', 'right', 'center', 'none', 'both'];
+    try {
+        const sql = `INSERT INTO \`steering-wheel\` (side) 
+                    VALUES ${steeringWheelSides.map(s => `("${s}")`).join(', ')};`;
+        await db.execute(sql);
+    } catch (error) {
+        console.log('Nepavyko sugeneruoti "streering-wheel" lenteles turinio');
+        console.log(error);
+        throw error;
+    }
+}
+
+// async function generateForms(db) {
+//     try {
+//         const sql = `INSERT INTO users ( title, color, price, year, location, image) 
+//                     VALUES  ('Bevardis', 'ruda', '500', '2', 'Vilnius', 'form_1694958687895.png'),
+//                             ('Rudis', 'tamsi', '300', '4', 'Kaunas', 'form_1694959071738.png'),
+//                             ('Pukis', 'auksine', '700', '1', 'Klaipeda', 'form_1694959287302.png'),
+//                             ('Rikis', 'pilka', '100', '3', 'Vilnius', 'form_1694961463643.png')`;
+//         await db.execute(sql);
+//     } catch (error) {
+//         console.log('Nepavyko sugeneruoti "forms" lenteles turinio');
+//         console.log(error);
+//         throw error;
+//     }
+// }
 
 
 export const connection = await setupDb();

@@ -14,6 +14,10 @@ export const initialContext = {
     deleteTotal: () => { },
     changeTotal: () => { },
     updateTotale: () => { },
+    forms: [],
+    updateForms: () => { },
+    steeringWheelSides: [],
+
 
 };
 
@@ -25,6 +29,8 @@ export const ContextWrapper = (props) => {
     const [fullname, setFullname] = useState(initialContext.fullname);
     const [email, setEmail] = useState(initialContext.email);
     const [total, setTotal] = useState(initialContext.total);
+    const [forms, setForms] = useState(initialContext.forms);
+    const [steeringWheelSides, setSteeringWheelSides] = useState(initialContext.steeringWheelSides);
 
     useEffect(() => {
         fetch('http://localhost:3001/api/login', {
@@ -59,6 +65,23 @@ export const ContextWrapper = (props) => {
             .then(data => {
                 if (data.status === 'ok' && data.list) {
                     setTotal(data.list.map(t => t.title));
+                }
+            })
+            .catch(console.error);
+    }, []);
+
+    useEffect(() => {
+        fetch('http://localhost:3001/api/data/steering-wheel-sides', {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+            },
+            credentials: 'include',
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.status === 'ok' && data.list) {
+                    setSteeringWheelSides(data.list.map(t => t.side));
                 }
             })
             .catch(console.error);
@@ -100,6 +123,10 @@ export const ContextWrapper = (props) => {
         setTotal(pre => pre.map(title => title === oldTotal ? newTotal : title));
     }
 
+    function updateForms(forms) {
+        setForms(forms);
+    }
+
 
     const value = {
         loginStatus,
@@ -115,6 +142,9 @@ export const ContextWrapper = (props) => {
         deleteTotal,
         changeTotal,
         updateTotale,
+        forms,
+        updateForms,
+        steeringWheelSides,
        
     };
 
