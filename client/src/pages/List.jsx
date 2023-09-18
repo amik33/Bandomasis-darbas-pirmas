@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"
+// import { Link } from "react-router-dom"
 import { PublicTotalTable } from "../components/total-table/PublicTotalTable"
 
 export function List () {
@@ -11,54 +11,42 @@ export function List () {
             <h3 className="fs-2 text-body-emphasis">List content</h3>
             <p>Paragraph of text beneath the heading to explain the heading</p>
             <PublicTotalTable />
-            <Link to="/" className="icon-link">
-                Call to action
-            </Link>
+            {/* <Link to="/" className="btn btn-success rounded-pill py-2">Update</Link> */}
         </div>
         <div className="feature col">
             <div className="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3"></div>
             <h3 className="fs-2 text-body-emphasis">List content</h3>
             <p>Paragraph of text beneath the heading to explain the heading</p>
             <PublicTotalTable />
-            <Link to="/" className="icon-link">
-                Call to action
-            </Link>
+            {/* <Link to="/" className="btn btn-success rounded-pill py-2">Update</Link> */}
         </div>
         <div className="feature col">
             <div className="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3"></div>
             <h3 className="fs-2 text-body-emphasis">List content</h3>
             <p>Paragraph of text beneath the heading to explain the heading</p>
             <PublicTotalTable />
-            <Link to="/" className="icon-link">
-                Call to action
-            </Link>
+            {/* <Link to="/" className="btn btn-success rounded-pill py-2">Update</Link> */}
         </div>
         <div className="feature col">
             <div className="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3"></div>
             <h3 className="fs-2 text-body-emphasis">List content</h3>
             <p>Paragraph of text beneath the heading to explain the heading</p>
             <PublicTotalTable />
-            <Link to="/" className="icon-link">
-                Call to action
-            </Link>
+            {/* <Link to="/" className="btn btn-success rounded-pill py-2">Update</Link> */}
         </div>
         <div className="feature col">
             <div className="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3"></div>
             <h3 className="fs-2 text-body-emphasis">List content</h3>
             <p>Paragraph of text beneath the heading to explain the heading</p>
             <PublicTotalTable />
-            <Link to="/" className="icon-link">
-                Call to action
-            </Link>
+            {/* <Link to="/" className="btn btn-success rounded-pill py-2">Update</Link> */}
         </div>
         <div className="feature col">
             <div className="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3"></div>
             <h3 className="fs-2 text-body-emphasis">List content</h3>
             <p>Paragraph of text beneath the heading to explain the heading</p>
             <PublicTotalTable />
-            <Link to="/" className="icon-link">
-                Call to action
-            </Link>
+            {/* <Link to="/" className="btn btn-success rounded-pill py-2">Update</Link> */}
         </div>
     </div>
 </div>

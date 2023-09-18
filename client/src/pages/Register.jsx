@@ -35,7 +35,7 @@ export function Register() {
 
     function isValidFullnameFormat(name) {
         const nameWords = name.split(' ');
-        if (nameWords.length < 2 || nameWords.length > 3) {
+        if (nameWords.length < 2 || nameWords.length > 2) {
             return false;
         } 
 
@@ -49,7 +49,7 @@ export function Register() {
     }
 
     function isValidFullname() {
-        const minFullnameSize = 3;
+        const minFullnameSize = 6;
         const maxFullnameSize = 50;
 
         if (!isValidFullnameFormat(fullname)) {

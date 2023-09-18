@@ -8,6 +8,40 @@ export const login = express.Router();
 login.post('/', async (req, res) => {
     const { email, password } = req.body;
 
+    const minEmailSize = 6;
+    const maxEmailSize = 60;
+    const minPasswordSize = 6;
+    const maxPasswordSize = 60;
+
+    if (typeof email !== 'string' || email.length < minEmailSize) {
+        errors.push({
+            input:'email',
+            msg: `Email too short. Minimum ${minEmailSize} symbols required.`,
+        })
+    }
+
+    if (typeof email !== 'string' || email.length > maxEmailSize) {
+        errors.push({
+            input:'email',
+            msg: `Email too long. Minimum ${maxEmailSize} symbols required.`,
+        })
+    }
+
+    if (typeof password !== 'string' || password.length < minPasswordSize) {
+        errors.push({
+            input:'password',
+            msg: `Email too short. Minimum ${minPasswordSize} symbols required.`,
+        })
+    }
+
+    if (typeof password !== 'string' || password.length > maxPasswordSize) {
+        errors.push({
+            input:'password',
+            msg: `Email too long. Minimum ${maxPasswordSize} symbols required.`,
+        })
+    }
+
+
     try {
         const selectQuery = `SELECT users.id, users.fullname, users.email, roles.role FROM users
                             INNER JOIN roles ON roles.id = users.role_id
@@ -64,6 +98,7 @@ login.post('/', async (req, res) => {
 
 login.get('/', async(req, res) => {
     const { dublisToken } = req.cookies;
+
 
     if (!dublisToken) {
         return res.status(200).json({
